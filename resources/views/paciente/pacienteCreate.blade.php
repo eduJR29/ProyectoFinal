@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Paciente</title>
+    
+    @vite(['resources/css/pico.css',])
 </head>
 <body>
+    <img src="http://www.medicohomeopataonline.com/wp-content/uploads/2020/03/Medico-Homeopata-online_.png" width="65"
+    height="65"> 
+    <a class="boton" href="http://crud.test/dashboard">Inicio</a>
+    
     <h1>Crear Paciente</h1>
 
     <form action="/paciente" method="post">
@@ -32,9 +38,10 @@
         @enderror
         <br>
 
-        <label for="sexo">Sexo:</label>
+        <label for="sexo">Sexo:
         <input type="radio" name="sexo" value="F" {{ old('sexo') ? 'checked' : '' }}>F
         <input type="radio" name="sexo" value="M" {{ old('sexo') ? 'checked' : '' }}>M
+        </label>
         <br>
 
         <label for="edad">Edad:</label>

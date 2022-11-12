@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Paciente</title>
+    <title>Editar Paciente</title>
+    
+    @vite(['resources/css/pico.css',])
 </head>
 <body>
-    <h1>Crear Paciente</h1>
+    <img src="http://www.medicohomeopataonline.com/wp-content/uploads/2020/03/Medico-Homeopata-online_.png" width="65"
+    height="65"> 
+    <a class="boton" href="http://crud.test/dashboard">Inicio</a>
+    
+    <h1>Editar Paciente</h1>
 
     <form action="/paciente/{{ $paciente->id }}" method="post">
         @csrf
