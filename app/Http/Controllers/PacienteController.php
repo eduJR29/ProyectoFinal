@@ -14,7 +14,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::with('citas','medicamentos')->get();
+        //$pacientes = Paciente::all();
         return view('paciente.pacienteIndex', compact('pacientes'));
     }
 

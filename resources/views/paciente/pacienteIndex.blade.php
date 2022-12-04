@@ -20,6 +20,7 @@
                 <th>Nombre</th>
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
+                <th>Cita</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -33,6 +34,12 @@
                 </td>
                 <td>{{ $paciente->apellidop }}</td>
                 <td>{{ $paciente->apellidom }}</td>
+                <td>
+                    @foreach ($paciente->citas as $cita)
+                        {{ $cita->fecha }}, 
+                        {{ $cita->hora }}<br>
+                    @endforeach
+                </td>
                 <td>
                 <!--<a href="/paciente/{{ $paciente->id }}/edit">Editar</a>-->
                     <form action="/paciente/{{ $paciente->id }}/edit">
