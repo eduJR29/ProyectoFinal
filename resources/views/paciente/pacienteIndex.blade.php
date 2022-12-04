@@ -23,6 +23,7 @@
                 <th>Cita</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
+                <th>Correo</th>
             </tr>
         @foreach ($pacientes as $paciente)
             <tr>
@@ -52,6 +53,10 @@
                        @method('DELETE')
                        <input type="submit" value="Eliminar">
                     </form>
+                </td>
+
+                <td>
+                    <a href="{{ route('paciente.envia-correo', $paciente) }}">Enviar Correo</a>
                 </td>
             </tr>
         @endforeach

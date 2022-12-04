@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
 
 class PacienteController extends Controller
 {
@@ -121,5 +124,11 @@ class PacienteController extends Controller
         //$this->authorize('delete', $paciente);
         $paciente->delete();
         return redirect('/paciente');
+    }
+
+    public function enviaCorreo(Paciente $paciente)
+    {
+        Mail::to($paciente->user>email)->send(new NotificacionPaciente($paciente));
+        return back();
     }
 }

@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('paciente/envia-correo/{paciente}', [PacienteController::class, 'enviaCorreo'])->name('paciente.envia-correo');
 Route::resource('paciente', PacienteController::class)->middleware('auth');
 Route::resource('cita', CitaController::class)->middleware('auth');
 Route::resource('medicamento', MedicamentoController::class)->middleware('auth');
