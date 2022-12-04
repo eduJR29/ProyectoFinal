@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('citas', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('paciente_id')->constrained()->onDelete('cascade');
-            $table->date('fecha');
-            $table->time('hora');
-            $table->timestamps();
+        Schema::create('medicamento_paciente', function (Blueprint $table) {
+            $table->foreignId('paciente_id')->constrained()->OnDelete('cascade');
+            $table->foreignId('medicamento_id')->constrained();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citas');
+        Schema::dropIfExists('medicamento_paciente');
     }
 };

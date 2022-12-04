@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\MedicamentoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Route::resource('paciente', PacienteController::class)->middleware('auth');
 Route::resource('cita', CitaController::class)->middleware('auth');
+Route::resource('medicamento', MedicamentoController::class)->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',
