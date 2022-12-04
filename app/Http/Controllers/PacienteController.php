@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PacienteController extends Controller
 {
@@ -71,6 +73,7 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
+        //Gate::authorize('editar-paciente', $paciente);
         return view('paciente.pacienteEdit', compact('paciente'));
     }
 
@@ -115,6 +118,7 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
+        //$this->authorize('delete', $paciente);
         $paciente->delete();
         return redirect('/paciente');
     }

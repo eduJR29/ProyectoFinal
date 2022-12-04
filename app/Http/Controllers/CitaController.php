@@ -6,6 +6,7 @@ use App\Models\Cita;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CitaController extends Controller
 {
