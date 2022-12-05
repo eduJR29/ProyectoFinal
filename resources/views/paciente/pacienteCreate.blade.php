@@ -15,7 +15,7 @@
     
     <h1>Crear Paciente</h1>
 
-    <form action="/paciente" method="post">
+    <form action="/paciente" method="post" enctype="multipart/form-data">
         @csrf
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" value="{{ old('nombre') }}">
@@ -63,6 +63,8 @@
         @error('direccion')
               <i>{{ $message }}</i>
         @enderror
+        <br>
+        <input type="file" name="archivo" id="">
         <br>
 
         <input type="submit" value="Guardar">

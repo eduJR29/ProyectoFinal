@@ -23,4 +23,9 @@ class Paciente extends Model
         return  $this->belongsToMany(Medicamento::class);
     }
 
+    public function archivos()
+    {
+        return $this->hasMany(Archivo::class);
+    }
+
 }

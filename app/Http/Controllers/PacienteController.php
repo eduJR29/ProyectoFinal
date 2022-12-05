@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use App\Models\User;
+use App\Models\Archivo;
+use App\Mail\NotificacionPaciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class PacienteController extends Controller
 {
@@ -52,7 +54,19 @@ class PacienteController extends Controller
             'direccion' => 'required|max:255',
         ]);
 
-        Paciente::create($request->all());
+        $paciente = Paciente::create($request->all());
+
+        //Archivos
+        if ($request->file('archivo')->isValid()){
+            $ubicacion = $request->archivo->store('public');
+
+            $archivo = new Archivo();
+            $archivo->ubicacion = $ubicacion;
+            $archivo->nombre_original = $request->archivo->getClientOriginalName();
+            $archivo->mime = $request->archivo->getClientMimeType();
+
+            $paciente->archivos()->save($archivo);
+        }
 
         return redirect('/paciente');
     }
@@ -130,5 +144,10 @@ class PacienteController extends Controller
     {
         Mail::to($paciente->user>email)->send(new NotificacionPaciente($paciente));
         return back();
+    }
+
+    public function descargaArchivo(Archivo $archivo)
+    {
+        return Storage::download($archivo->ubicacion);
     }
 }

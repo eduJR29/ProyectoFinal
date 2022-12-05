@@ -36,6 +36,16 @@
                 <td>{{ $paciente->telefono }}</td>
                 <td>{{ $paciente->direccion }}</td>
             </tr>
+
+            <p>
+                <h3>Archivos</h3>
+                <ul>
+                    @foreach ($paciente->archivos as $archivo)
+                       <li><a href="{{ route('descarga', $archivo) }}">{{ $archivo->nombre_original }}</a></li>
+                       <!--<img src="{{ \Storage::url($archivo->ubicacion) }}" alt="" width="200">-->
+                    @endforeach
+                </ul>
+            </p>
         </table>
 </body>
 </html>
