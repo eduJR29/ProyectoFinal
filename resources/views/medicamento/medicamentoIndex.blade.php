@@ -13,6 +13,12 @@
     <img src="http://www.medicohomeopataonline.com/wp-content/uploads/2020/03/Medico-Homeopata-online_.png" width="65"
     height="65"> 
     <a class="boton" href="http://consultorio.test/dashboard">Inicio</a>
+    <br>
+    @if(Session::has('Mensaje')){{
+        Session::get('Mensaje')
+    }}
+    @endif
+
     <h1>Medicamentos</h1>
         <table border="1">
             <tr>
@@ -31,19 +37,6 @@
                 <td>{{ $medicamento->nombre_medicamento }}</td>
                 <td>{{ $medicamento->presentacion }}</td>
                 <td>{{ $medicamento->cantidad }}</td>
-                <td>
-            
-                    <form action="/medicamento/{{ $medicamento->id }}/edit">
-                       <input type="submit" value="Editar">
-                    </form>
-                </td>
-                <td>
-                    <form action="/medicamento/{{ $medicamento->id }}" method="post">
-                       @csrf
-                       @method('DELETE')
-                       <input type="submit" value="Eliminar">
-                    </form>
-                </td>
             </tr>
         @endforeach
         </table>

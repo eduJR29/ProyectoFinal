@@ -68,7 +68,7 @@ class PacienteController extends Controller
             $paciente->archivos()->save($archivo);
         }
 
-        return redirect('/paciente');
+        return redirect('/paciente')->with('Mensaje','Paciente agregado con éxito');
     }
 
     /**
@@ -124,7 +124,7 @@ class PacienteController extends Controller
 
         Paciente::where('id', $paciente->id)->update($request->except('_token', '_method'));
 
-        return redirect('/paciente');
+        return redirect('/paciente')->with('Mensaje','Paciente modificado con éxito');
     }
 
     /**
@@ -137,7 +137,7 @@ class PacienteController extends Controller
     {
         //$this->authorize('delete', $paciente);
         $paciente->delete();
-        return redirect('/paciente');
+        return redirect('/paciente')->with('Mensaje','Paciente eliminado con éxito');
     }
 
     public function enviaCorreo(Paciente $paciente)

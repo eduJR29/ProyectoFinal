@@ -51,7 +51,7 @@ class MedicamentoController extends Controller
 
         $medicamento->pacientes()->attach($request->paciente_id);
 
-        return redirect('/medicamento');
+        return redirect('/medicamento')->with('Mensaje','Medicamento agregado con éxito');;
     }
 
     /**

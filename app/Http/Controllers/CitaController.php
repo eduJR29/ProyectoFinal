@@ -49,7 +49,7 @@ class CitaController extends Controller
         $request->merge(['paciente_id' => Auth::id()]);
         Cita::create($request->all());
 
-        return redirect('/cita');
+        return redirect('/cita')->with('Mensaje','Cita agendada con éxito');;
     }
 
     /**
